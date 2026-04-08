@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <footer class="bg-forest-dark pt-16 pb-8 text-white/60">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-3 text-justify">
 
           <!-- Logo & Info -->
           <div>
@@ -22,16 +22,16 @@ import { CommonModule } from '@angular/common';
             <div class="space-y-1 text-sm">
               <a href="mailto:info@italyafricavrl.com" class="block hover:text-white transition-colors">info&#64;italyafricavrl.com</a>
               <a href="mailto:mkante@italyafricavrl.com" class="block hover:text-white transition-colors">mkante&#64;italyafricavrl.com</a>
-              <p class="mt-2">Numéro Fixe&nbsp;: <a href="tel:0522928215" class="text-white hover:text-accent">05 22 92 82 15</a></p>
-              <p>Numéro Portable&nbsp;: <a href="tel:+212631661370" class="text-white hover:text-accent">+212 (6) 31 66 13 70</a></p>
+              <p class="mt-2 text-justify">Numéro Fixe&nbsp;: <a href="tel:0522928215" class="text-white hover:text-accent">05 22 92 82 15</a></p>
+              <p class="text-justify">Numéro Portable&nbsp;: <a href="tel:+212631661370" class="text-white hover:text-accent">+212 (6) 31 66 13 70</a></p>
             </div>
           </div>
 
-          <!-- Expertises -->
+          <!-- Droit d'affaire -->
           <div>
-            <h3 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Expertises</h3>
+            <h3 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Droit d'affaire</h3>
             <ul class="space-y-3 text-sm">
-              <li *ngFor="let e of expertises">
+              <li *ngFor="let e of expertises" class="text-justify">
                 <a (click)="navigate.emit('expertises')" class="cursor-pointer hover:text-white transition-colors">{{ e }}</a>
               </li>
             </ul>
@@ -41,7 +41,7 @@ import { CommonModule } from '@angular/common';
           <div>
             <h3 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Liens Rapides</h3>
             <ul class="space-y-3 text-sm">
-              <li *ngFor="let l of links">
+              <li *ngFor="let l of links" class="text-justify">
                 <a (click)="navigate.emit(l.id)" class="cursor-pointer hover:text-white transition-colors">{{ l.name }}</a>
               </li>
             </ul>
@@ -60,28 +60,26 @@ export class FooterComponent {
   @Output() navigate = new EventEmitter<string>();
 
   locations = [
-    "Côte d'Ivoire – Abidjan",
     "Maroc – Casablanca",
-    "Italie – Rome",
     "Sénégal – Dakar",
+    "Italie – Rome",
+    "Mali – Bamako",
+    "Côte d'Ivoire – Abidjan",
     "Burkina Faso – Ouagadougou",
-    "Centre Afrique – Bangui",
   ];
 
   expertises = [
-    "Contrats & Conformité",
-    "Médiation & Négociation",
-    "Représentation & Contentieux",
-    "Business International & Développement Économique",
-    "Immobilier & Gestion d'Actifs",
-    "Conseil & Assistance Juridique",
+    "Protection & Contrats",
+    "Informations commerciales",
+    "Banque & Finance",
+    "Gestion des Risques",
+    "Autres Secteurs de Compétences",
   ];
 
   links = [
     { name: 'Accueil',        id: 'home' },
     { name: 'Qui somme nous', id: 'qui-sommes-nous' },
-    { name: 'Italyafrica',    id: 'home' },
-    { name: 'Expertises',     id: 'expertises' },
+    { name: "Droit d'affaire", id: 'expertises' },
     { name: 'Contact',        id: 'contact' },
   ];
 }

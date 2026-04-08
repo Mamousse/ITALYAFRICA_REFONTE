@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -L \"https://flagcdn.com/w160/ml.png\" -o \"C:/Users/Lenovo-ThinkBook/Videos/test/italy-africa-angular/public/assets/flags/ml.png\")",
+      "Bash(curl -L \"https://flagcdn.com/w320/ml.png\" --output \"C:/Users/Lenovo-ThinkBook/Videos/test/italy-africa-angular/public/assets/flags/ml.png\" -A \"Mozilla/5.0\")",
+      "Bash(npm install:*)",
+      "Bash(npm list:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

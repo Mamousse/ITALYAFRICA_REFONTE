@@ -52,11 +52,11 @@ gsap.registerPlugin(ScrollTrigger);
 export class LocationsComponent implements AfterViewInit {
   locations = [
     { country: 'Maroc',         city: 'Casablanca',   flagCode: 'ma', address: '228 BD Mohamed V, ETG 9' },
-    { country: 'Italie',        city: 'Rome',          flagCode: 'it', address: 'Via di Ripetta, 00186' },      
-    { country: 'Côte d\'Ivoire',city: 'Abidjan',       flagCode: 'ci', address: 'Immeuble CCIA, Plateau' },    
     { country: 'Sénégal',       city: 'Dakar',         flagCode: 'sn', address: 'Avenue Cheikh Anta Diop' },  
-    { country: 'Burkina Faso',  city: 'Ouagadougou',   flagCode: 'bf', address: 'Zone d\'activités diverses' },
-    { country: 'Centre Afrique',city: 'Bangui',        flagCode: 'cf', address: 'Bureau de liaison' }
+    { country: 'Italie',        city: 'Rome',          flagCode: 'it', address: 'Via di Ripetta, 00186' },      
+    { country: 'Mali',          city: 'Bamako',        flagCode: 'ml', address: 'Bureau de liaison' },
+    { country: 'Côte d\'Ivoire',city: 'Abidjan',       flagCode: 'ci', address: 'Immeuble CCIA, Plateau' },    
+    { country: 'Burkina Faso',  city: 'Ouagadougou',   flagCode: 'bf', address: 'Zone d\'activités diverses' }
   ];
 
   constructor(private el: ElementRef) {}
