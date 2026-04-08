@@ -23,7 +23,7 @@ export interface MailParams {
 export class EmailService {
   send(params: MailParams): Promise<void> {
     return emailjs
-      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params as Record<string, unknown>, {
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params as unknown as Record<string, unknown>, {
         publicKey: EMAILJS_PUBLIC_KEY,
       })
       .then(() => void 0);

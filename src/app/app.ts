@@ -6,7 +6,6 @@ import { AboutComponent } from './components/about';
 import { ExperienceComponent } from './components/experience';
 import { ServicesComponent } from './components/services';
 import { ContactComponent } from './components/contact';
-import { NewsletterComponent } from './components/newsletter';
 import { FooterComponent } from './components/footer';
 import { LocationsComponent } from './components/locations';
 import { TeamComponent } from './components/team';
@@ -22,7 +21,6 @@ import { TeamComponent } from './components/team';
     ExperienceComponent,
     ServicesComponent,
     ContactComponent,
-    NewsletterComponent,
     FooterComponent,
     LocationsComponent,
     TeamComponent,
