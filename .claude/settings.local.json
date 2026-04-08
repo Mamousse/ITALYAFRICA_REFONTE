@@ -5,7 +5,20 @@
       "Bash(curl -L \"https://flagcdn.com/w320/ml.png\" --output \"C:/Users/Lenovo-ThinkBook/Videos/test/italy-africa-angular/public/assets/flags/ml.png\" -A \"Mozilla/5.0\")",
       "Bash(npm install:*)",
       "Bash(npm list:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:italy-africa.vercel.app)",
+      "WebFetch(domain:www.cci-maroc.com)",
+      "WebFetch(domain:avilamining.com)",
+      "WebFetch(domain:cciam.ma)",
+      "WebFetch(domain:www.cgem.ma)",
+      "WebFetch(domain:la-vita-e-bella.fr)",
+      "WebFetch(domain:cci-maroc.ma)",
+      "WebFetch(domain:coinchic.it)",
+      "WebSearch",
+      "Bash(curl -L \"https://iccmaroc.ma/wp-content/uploads/2023/06/cropped-image003-1.png\" -o \"cci-maroc.png\" -A \"Mozilla/5.0\")",
+      "Bash(curl -L \"https://avilaenergy.com/site/templates/build/img/logo.png\" -o \"avila-mining.png\" -A \"Mozilla/5.0\")",
+      "Bash(curl -L \"https://cf-st.sc-cdn.net/snapzen-assets/v1/styles/homes-v2-on-the-map-3d-light/sprite/restaurant_glyph_dark@2x.png?api_key=viAIqRr9UOG\" -o \"coin-chic-icon.png\" -A \"Mozilla/5.0\")",
+      "Bash(curl -L \"https://la-vita-e-bella.fr/wp-content/uploads/LOGO-VITA-E-BELLA-8.png\" -o \"la-vita-e-bella.png\" -A \"Mozilla/5.0\")"
     ]
   }
 }
