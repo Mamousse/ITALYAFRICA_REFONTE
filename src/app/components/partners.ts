@@ -40,11 +40,8 @@ gsap.registerPlugin(ScrollTrigger);
                    class="max-h-20 max-w-full w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </div>
 
-            <!-- Nom + pays -->
-            <div class="text-center">
-              <p class="text-sm font-bold text-forest group-hover:text-[#b38e2d] transition-colors">{{ p.name }}</p>
-              <p class="text-[0.65rem] text-gray-400 mt-0.5 uppercase tracking-wider">{{ p.country }}</p>
-            </div>
+            <!-- Nom -->
+            <p class="text-sm font-bold text-center text-forest group-hover:text-[#b38e2d] transition-colors">{{ p.name }}</p>
           </div>
         </div>
 
