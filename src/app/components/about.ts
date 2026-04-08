@@ -35,13 +35,10 @@ gsap.registerPlugin(ScrollTrigger);
 
             <div class="space-y-4 text-gray-600 leading-relaxed text-justify">
               <p class="reveal-para">
-                ITALYAFRICA VRL est un cabinet de conseil juridique international qui, avec ses partenaires, est la garantie de votre entreprise. Grâce à sa présence dans plusieurs pays africains, il offre une assistance professionnelle multidisciplinaire, sur mesure et de qualité pour les particuliers et les entreprises qui souhaitent investir sur le continent africain.
+                ITALYAFRICA VRL est un cabinet de conseil juridique international présent dans plusieurs pays africains, offrant une assistance multidisciplinaire et sur mesure aux particuliers et entreprises souhaitant investir sur le continent.
               </p>
               <p class="reveal-para">
-                Notre objectif principal est d'offrir à nos clients un partenaire solide et transparent, opérant dans le plein respect des réglementations et des principes éthiques les plus rigoureux.
-              </p>
-              <p class="reveal-para">
-                Nous sommes un cabinet multidisciplinaire spécialisé en droit civil, en droit des affaires, en droit bancaire et commercial…
+                Spécialisé en droit civil, droit des affaires et droit bancaire, notre cabinet s'engage à fournir des solutions innovantes dans le strict respect des réglementations et des principes éthiques les plus exigeants.
               </p>
             </div>
 
