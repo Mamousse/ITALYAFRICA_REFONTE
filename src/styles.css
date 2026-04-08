@@ -32,6 +32,19 @@
   .red-underline {
     @apply block w-8 h-0.5 bg-accent mt-3 mb-6;
   }
+  /* Champs du modal rendez-vous */
+  .rdv-field {
+    @apply relative flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 transition-all duration-200 focus-within:border-[#b38e2d] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(179,142,45,0.12)];
+  }
+  .rdv-icon {
+    @apply h-4 w-4 shrink-0 text-gray-400 transition-colors duration-200;
+  }
+  .rdv-field:focus-within .rdv-icon {
+    @apply text-[#b38e2d];
+  }
+  .rdv-input {
+    @apply w-full bg-transparent text-sm text-forest placeholder-gray-400 outline-none;
+  }
 }
 
 html { scroll-behavior: smooth; }

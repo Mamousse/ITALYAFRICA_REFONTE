@@ -60,66 +60,105 @@ gsap.registerPlugin(ScrollTrigger);
     <div *ngIf="showModal()"
          class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-forest-dark/80 backdrop-blur-sm"
          (click)="closeModal()">
-      <div class="relative w-full max-w-lg bg-cream rounded-2xl shadow-2xl p-8"
+      <div class="relative w-full max-w-lg overflow-hidden rounded-3xl shadow-2xl"
            (click)="$event.stopPropagation()">
 
-        <!-- Fermer -->
-        <button (click)="closeModal()"
-                class="absolute top-5 right-5 text-forest hover:text-accent transition-colors">
-          <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-
-        <h3 class="font-serif text-2xl font-bold text-forest mb-1">Planifier un rendez-vous</h3>
-        <div class="h-1 w-12 bg-accent mb-6"></div>
-
-        <!-- Succès -->
-        <div *ngIf="modalStatus() === 'success'"
-             class="flex items-center gap-3 rounded-xl bg-green-50 border border-green-200 px-5 py-4 text-sm text-green-800">
-          <svg class="h-5 w-5 shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          Votre demande a bien été envoyée. Nous vous contacterons rapidement.
-        </div>
-
-        <!-- Erreur -->
-        <div *ngIf="modalStatus() === 'error'"
-             class="mb-4 flex items-center gap-3 rounded-xl bg-red-50 border border-red-200 px-5 py-4 text-sm text-red-800">
-          <svg class="h-5 w-5 shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-          Une erreur est survenue. Veuillez réessayer.
-        </div>
-
-        <form *ngIf="modalStatus() !== 'success'" (submit)="sendRdv($event)" class="space-y-4">
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="mb-1 block text-[0.7rem] font-bold uppercase tracking-wider text-forest">Nom</label>
-              <input type="text" [(ngModel)]="rdv.nom" name="nom" placeholder="Votre nom"
-                     class="input-field" required>
-            </div>
-            <div>
-              <label class="mb-1 block text-[0.7rem] font-bold uppercase tracking-wider text-forest">E-mail</label>
-              <input type="email" [(ngModel)]="rdv.email" name="email" placeholder="votre@email.com"
-                     class="input-field" required>
-            </div>
-          </div>
-          <div>
-            <label class="mb-1 block text-[0.7rem] font-bold uppercase tracking-wider text-forest">Téléphone</label>
-            <input type="tel" [(ngModel)]="rdv.tel" name="tel" placeholder="+212 …"
-                   class="input-field">
-          </div>
-          <div>
-            <label class="mb-1 block text-[0.7rem] font-bold uppercase tracking-wider text-forest">Objet</label>
-            <input type="text" [(ngModel)]="rdv.objet" name="objet" placeholder="Ex : Consultation droit des affaires"
-                   class="input-field" required>
-          </div>
-          <button type="submit" [disabled]="sending()"
-                  class="w-full rounded-full bg-[#b38e2d] py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#9c7a26] hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed">
-            {{ sending() ? 'Envoi en cours…' : 'Envoyer la demande' }}
+        <!-- Header doré -->
+        <div class="bg-[#1a3a2e] px-8 pt-8 pb-6">
+          <button (click)="closeModal()"
+                  class="absolute top-5 right-5 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition-all">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
           </button>
-        </form>
+          <!-- Icône -->
+          <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#b38e2d]/20">
+            <svg class="h-6 w-6 text-[#b38e2d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white leading-tight">Planifier un rendez-vous</h3>
+          <p class="mt-1 text-sm text-white/50">Nous vous répondrons dans les 24 h.</p>
+        </div>
+
+        <!-- Body -->
+        <div class="bg-white px-8 py-7">
+
+          <!-- Succès -->
+          <div *ngIf="modalStatus() === 'success'"
+               class="flex flex-col items-center gap-3 py-6 text-center">
+            <div class="flex h-14 w-14 items-center justify-center rounded-full bg-green-50 border border-green-200">
+              <svg class="h-7 w-7 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <p class="font-serif text-lg font-bold text-forest">Demande envoyée !</p>
+            <p class="text-sm text-gray-500">Nous vous contacterons rapidement.</p>
+          </div>
+
+          <!-- Erreur -->
+          <div *ngIf="modalStatus() === 'error'"
+               class="mb-5 flex items-center gap-3 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+            <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+            Une erreur est survenue. Veuillez réessayer.
+          </div>
+
+          <form *ngIf="modalStatus() !== 'success'" (submit)="sendRdv($event)" class="space-y-5">
+
+            <!-- Nom + Email -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rdv-field">
+                <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <input type="text" [(ngModel)]="rdv.nom" name="nom" placeholder="Nom complet"
+                       class="rdv-input" required>
+              </div>
+              <div class="rdv-field">
+                <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <input type="email" [(ngModel)]="rdv.email" name="email" placeholder="E-mail"
+                       class="rdv-input" required>
+              </div>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="rdv-field">
+              <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <input type="tel" [(ngModel)]="rdv.tel" name="tel" placeholder="Téléphone"
+                     class="rdv-input">
+            </div>
+
+            <!-- Objet -->
+            <div class="rdv-field">
+              <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              <input type="text" [(ngModel)]="rdv.objet" name="objet"
+                     placeholder="Objet de la consultation"
+                     class="rdv-input" required>
+            </div>
+
+            <!-- Bouton -->
+            <button type="submit" [disabled]="sending()"
+                    class="w-full rounded-full bg-[#b38e2d] py-4 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#9c7a26] hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              <svg *ngIf="!sending()" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              {{ sending() ? 'Envoi en cours…' : 'Envoyer la demande' }}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   `,
