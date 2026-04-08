@@ -51,7 +51,10 @@ gsap.registerPlugin(ScrollTrigger);
       </div>
     </section>
   `,
-  styles: [`:host { display: block; }`]
+  styles: [`
+    :host { display: block; }
+    .reveal-up, .reveal-card { opacity: 1; }
+  `]
 })
 export class PartnersComponent implements AfterViewInit {
 
@@ -66,16 +69,27 @@ export class PartnersComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const root = this.el.nativeElement;
-    setTimeout(() => ScrollTrigger.refresh(), 100);
 
-    gsap.from(root.querySelector('.reveal-up'), {
-      scrollTrigger: { trigger: root.querySelector('.reveal-up'), start: 'top 85%', once: true },
-      y: 50, opacity: 0, duration: 1, ease: 'power2.out'
-    });
+    setTimeout(() => {
+      ScrollTrigger.refresh();
 
-    gsap.from(root.querySelectorAll('.reveal-card'), {
-      scrollTrigger: { trigger: root.querySelector('.grid'), start: 'top 85%', once: true },
-      y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out'
-    });
+      const header = root.querySelector('.reveal-up');
+      if (header) {
+        gsap.fromTo(header,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: 'power2.out',
+            scrollTrigger: { trigger: header, start: 'top 95%', once: true } }
+        );
+      }
+
+      const cards = root.querySelectorAll('.reveal-card');
+      if (cards.length) {
+        gsap.fromTo(cards,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+            scrollTrigger: { trigger: root.querySelector('.grid'), start: 'top 95%', once: true } }
+        );
+      }
+    }, 300);
   }
 }
