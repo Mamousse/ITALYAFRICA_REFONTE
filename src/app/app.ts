@@ -9,6 +9,7 @@ import { ContactComponent } from './components/contact';
 import { FooterComponent } from './components/footer';
 import { LocationsComponent } from './components/locations';
 import { TeamComponent } from './components/team';
+import { PartnersComponent } from './components/partners';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { TeamComponent } from './components/team';
     FooterComponent,
     LocationsComponent,
     TeamComponent,
+    PartnersComponent,
   ],
   template: `
     <div class="min-h-screen bg-cream">
@@ -51,9 +53,7 @@ import { TeamComponent } from './components/team';
           </ng-container>
 
           <ng-container *ngSwitchCase="'partenaires'">
-            <div class="pt-20">
-              <div class="text-center py-20 text-forest font-serif text-3xl">Nos Partenaires</div>
-            </div>
+            <div class="pt-20"><app-partners /></div>
           </ng-container>
 
           <ng-container *ngSwitchCase="'contact'">
