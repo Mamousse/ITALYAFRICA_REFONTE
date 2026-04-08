@@ -48,6 +48,10 @@ import { TeamComponent } from './components/team';
             <app-locations />
           </ng-container>
 
+          <ng-container *ngSwitchCase="'nos-axes'">
+            <div class="pt-20"><app-services /></div>
+          </ng-container>
+
           <ng-container *ngSwitchCase="'partenaires'">
             <div class="pt-20"><div class="text-center py-20 text-forest font-serif text-3xl">Nos Partenaires</div></div>
           </ng-container>

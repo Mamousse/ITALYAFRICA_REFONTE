@@ -27,12 +27,12 @@ import { CommonModule } from '@angular/common';
             </div>
           </div>
 
-          <!-- Droit d'affaire -->
+          <!-- Nos axes d'intervention -->
           <div>
-            <h3 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Droit d'affaire</h3>
+            <h3 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Nos axes d'intervention</h3>
             <ul class="space-y-3 text-sm">
               <li *ngFor="let e of expertises" class="text-justify">
-                <a (click)="navigate.emit('expertises')" class="cursor-pointer hover:text-white transition-colors">{{ e }}</a>
+                <a (click)="navigate.emit('nos-axes')" class="cursor-pointer hover:text-white transition-colors">{{ e }}</a>
               </li>
             </ul>
           </div>
@@ -77,9 +77,10 @@ export class FooterComponent {
   ];
 
   links = [
-    { name: 'Accueil',        id: 'home' },
-    { name: 'Qui somme nous', id: 'qui-sommes-nous' },
-    { name: "Droit d'affaire", id: 'expertises' },
-    { name: 'Contact',        id: 'contact' },
+    { name: 'Accueil',               id: 'home' },
+    { name: 'Qui sommes nous',       id: 'qui-sommes-nous' },
+    { name: "Nos axes d'intervention", id: 'nos-axes' },
+    { name: 'Nos partenaires',       id: 'partenaires' },
+    { name: 'Contact',               id: 'contact' },
   ];
 }

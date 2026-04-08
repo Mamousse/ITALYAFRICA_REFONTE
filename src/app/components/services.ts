@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
     <section id="expertises" class="bg-cream py-20 lg:py-28 overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-16 text-center reveal-up">
-          <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl uppercase tracking-tight">Droit d'affaire</h2>
+          <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl uppercase tracking-tight">Nos axes d'intervention</h2>
           <div class="mx-auto mt-4 h-1 w-20 bg-accent"></div>
           <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Des solutions juridiques adaptées à vos besoins stratégiques et opérationnels.</p>
         </div>

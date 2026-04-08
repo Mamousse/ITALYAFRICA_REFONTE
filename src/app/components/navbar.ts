@@ -63,6 +63,7 @@ export class NavbarComponent {
   navItems = [
     { id: 'home',            name: 'Accueil' },
     { id: 'qui-sommes-nous', name: 'Qui sommes nous' },
+    { id: 'nos-axes',        name: "Nos axes d'intervention" },
     { id: 'partenaires',     name: 'Nos partenaires' },
     { id: 'contact',         name: 'Contact' },
   ];
