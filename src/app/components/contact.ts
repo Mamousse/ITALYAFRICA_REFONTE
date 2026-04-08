@@ -22,57 +22,108 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+
           <!-- Form -->
-          <div class="rounded-2xl bg-white p-8 shadow-sm reveal-contact-left">
+          <div class="overflow-hidden rounded-3xl shadow-lg reveal-contact-left">
 
-            <!-- Message succès -->
-            <div *ngIf="status() === 'success'"
-                 class="mb-6 flex items-center gap-3 rounded-xl bg-green-50 border border-green-200 px-5 py-4 text-sm text-green-800">
-              <svg class="h-5 w-5 shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.
+            <!-- Header -->
+            <div class="bg-[#1a3a2e] px-8 py-7">
+              <div class="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#b38e2d]/20">
+                <svg class="h-5 w-5 text-[#b38e2d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3v-3z"/>
+                </svg>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-white">Entrons en contact</h3>
+              <p class="mt-1 text-xs text-white/50">Nous vous répondrons dans les plus brefs délais.</p>
             </div>
 
-            <!-- Message erreur -->
-            <div *ngIf="status() === 'error'"
-                 class="mb-6 flex items-center gap-3 rounded-xl bg-red-50 border border-red-200 px-5 py-4 text-sm text-red-800">
-              <svg class="h-5 w-5 shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
-              Une erreur est survenue. Veuillez réessayer ou nous contacter directement par email.
-            </div>
+            <!-- Body -->
+            <div class="bg-white px-8 py-7 space-y-4">
 
-            <form *ngIf="status() !== 'success'" (submit)="onSubmit($event)" class="space-y-5">
-              <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div>
-                  <label class="mb-1.5 block text-sm font-medium text-forest uppercase tracking-wider text-[0.7rem]">Nom</label>
-                  <input type="text" [(ngModel)]="form.nom" name="nom" placeholder="Votre nom" class="input-field" required>
+              <!-- Succès -->
+              <div *ngIf="status() === 'success'"
+                   class="flex flex-col items-center gap-3 py-8 text-center">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-green-50 border border-green-200">
+                  <svg class="h-7 w-7 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
                 </div>
-                <div>
-                  <label class="mb-1.5 block text-sm font-medium text-forest uppercase tracking-wider text-[0.7rem]">E-mail</label>
-                  <input type="email" [(ngModel)]="form.email" name="email" placeholder="votre@email.com" class="input-field" required>
-                </div>
+                <p class="font-serif text-lg font-bold text-forest">Message envoyé !</p>
+                <p class="text-sm text-gray-500">Nos experts vous contacteront rapidement.</p>
               </div>
-              <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div>
-                  <label class="mb-1.5 block text-sm font-medium text-forest uppercase tracking-wider text-[0.7rem]">Numéro de téléphone</label>
-                  <input type="tel" [(ngModel)]="form.tel" name="tel" placeholder="+212 ..." class="input-field">
-                </div>
-                <div>
-                  <label class="mb-1.5 block text-sm font-medium text-forest uppercase tracking-wider text-[0.7rem]">Entreprise</label>
-                  <input type="text" [(ngModel)]="form.entreprise" name="entreprise" placeholder="Nom de votre entreprise" class="input-field">
-                </div>
+
+              <!-- Erreur -->
+              <div *ngIf="status() === 'error'"
+                   class="flex items-center gap-3 rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+                Une erreur est survenue. Veuillez réessayer.
               </div>
-              <div>
-                <label class="mb-1.5 block text-sm font-medium text-forest uppercase tracking-wider text-[0.7rem]">Votre Message</label>
-                <textarea [(ngModel)]="form.message" name="message" rows="5" placeholder="Décrivez votre besoin..." class="input-field resize-none" required></textarea>
-              </div>
-              <button type="submit" [disabled]="sending()"
-                      class="w-full rounded-full bg-[#b38e2d] py-4 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#9c7a26] hover:shadow-lg hover:-translate-y-1 disabled:opacity-60 disabled:cursor-not-allowed">
-                {{ sending() ? 'Envoi en cours…' : 'Planifiez une consultation' }}
-              </button>
-            </form>
+
+              <form *ngIf="status() !== 'success'" (submit)="onSubmit($event)" class="space-y-4">
+
+                <!-- Nom + Email -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="rdv-field">
+                    <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <input type="text" [(ngModel)]="form.nom" name="nom"
+                           placeholder="Nom complet" class="rdv-input" required>
+                  </div>
+                  <div class="rdv-field">
+                    <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <input type="email" [(ngModel)]="form.email" name="email"
+                           placeholder="E-mail" class="rdv-input" required>
+                  </div>
+                </div>
+
+                <!-- Tél + Entreprise -->
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="rdv-field">
+                    <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <input type="tel" [(ngModel)]="form.tel" name="tel"
+                           placeholder="Téléphone" class="rdv-input">
+                  </div>
+                  <div class="rdv-field">
+                    <svg class="rdv-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <input type="text" [(ngModel)]="form.entreprise" name="entreprise"
+                           placeholder="Entreprise" class="rdv-input">
+                  </div>
+                </div>
+
+                <!-- Message -->
+                <div class="rdv-field !items-start">
+                  <svg class="rdv-icon mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                  </svg>
+                  <textarea [(ngModel)]="form.message" name="message" rows="4"
+                            placeholder="Décrivez votre besoin…"
+                            class="rdv-input resize-none" required></textarea>
+                </div>
+
+                <button type="submit" [disabled]="sending()"
+                        class="w-full rounded-full bg-[#b38e2d] py-4 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#9c7a26] hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                  <svg *ngIf="!sending()" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  </svg>
+                  {{ sending() ? 'Envoi en cours…' : 'Envoyer le message' }}
+                </button>
+              </form>
+            </div>
           </div>
 
           <!-- Map -->
