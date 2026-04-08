@@ -28,17 +28,24 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <!-- Grille logos -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div *ngFor="let p of partners"
-               class="reveal-card group flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b38e2d]/30 hover:shadow-md">
-            <div class="flex h-20 w-full items-center justify-center overflow-hidden">
+               class="reveal-card group flex flex-col items-center justify-center gap-5 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b38e2d]/40 hover:shadow-lg">
+
+            <!-- Logo wrapper -->
+            <div class="flex h-24 w-full items-center justify-center overflow-hidden rounded-xl"
+                 [style.background]="p.bgColor || 'transparent'">
               <img [src]="'/assets/partners/' + p.logo"
                    [alt]="p.name"
-                   class="max-h-16 w-auto max-w-full object-contain grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:scale-105">
+                   class="max-h-20 w-auto max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
+                   [class.grayscale]="!p.bgColor"
+                   [class.group-hover:grayscale-0]="!p.bgColor">
             </div>
+
+            <!-- Nom + pays -->
             <div class="text-center">
-              <p class="text-xs font-bold text-forest group-hover:text-[#b38e2d] transition-colors">{{ p.name }}</p>
-              <p class="text-[0.65rem] text-gray-400 mt-0.5">{{ p.country }}</p>
+              <p class="text-sm font-bold text-forest group-hover:text-[#b38e2d] transition-colors">{{ p.name }}</p>
+              <p class="text-[0.65rem] text-gray-400 mt-0.5 uppercase tracking-wider">{{ p.country }}</p>
             </div>
           </div>
         </div>
@@ -51,9 +58,10 @@ gsap.registerPlugin(ScrollTrigger);
 export class PartnersComponent implements AfterViewInit {
 
   partners = [
-    { name: 'CCI Maroc',        logo: 'cci-maroc.png',      country: 'Maroc' },
-    { name: 'Coin Chic',        logo: 'coin-chic.png',      country: 'Italie' },
-    { name: 'La Vita è Bella',  logo: 'la-vita-e-bella.png', country: 'Italie' },
+    { name: 'ICC Maroc',       logo: 'cci-maroc.png',       country: 'Maroc',   bgColor: '' },
+    { name: 'Coin Chic',       logo: 'coin-chic-icon.png',  country: 'Italie',  bgColor: '#f5c518' },
+    { name: 'Avila Mining',    logo: 'avila-mining.png',    country: 'Afrique', bgColor: '' },
+    { name: 'La Vita è Bella', logo: 'la-vita-e-bella.png', country: 'Italie',  bgColor: '' },
   ];
 
   constructor(private el: ElementRef) {}
