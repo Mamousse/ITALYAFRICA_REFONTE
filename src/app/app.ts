@@ -41,6 +41,7 @@ import { PartnersComponent } from './components/partners';
             <app-services />
             <app-team />
             <app-locations />
+            <app-partners />
             <app-contact />
           </ng-container>
 

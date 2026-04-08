@@ -33,13 +33,11 @@ gsap.registerPlugin(ScrollTrigger);
                class="reveal-card group flex flex-col items-center justify-center gap-5 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b38e2d]/40 hover:shadow-lg">
 
             <!-- Logo wrapper -->
-            <div class="flex h-24 w-full items-center justify-center overflow-hidden rounded-xl"
-                 [style.background]="p.bgColor || 'transparent'">
+            <div class="flex h-24 w-full items-center justify-center overflow-hidden rounded-xl p-2"
+                 [style.backgroundColor]="p.bgColor || '#f9f9f9'">
               <img [src]="'/assets/partners/' + p.logo"
                    [alt]="p.name"
-                   class="max-h-20 w-auto max-w-[80%] object-contain transition-all duration-300 group-hover:scale-105"
-                   [class.grayscale]="!p.bgColor"
-                   [class.group-hover:grayscale-0]="!p.bgColor">
+                   class="max-h-20 max-w-full w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </div>
 
             <!-- Nom + pays -->
