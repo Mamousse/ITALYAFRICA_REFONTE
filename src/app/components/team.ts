@@ -34,16 +34,16 @@ gsap.registerPlugin(ScrollTrigger);
           <!-- Container de défilement -->
           <div #teamScroll class="flex-1 overflow-x-auto scrollbar-hide py-10">
             <div class="flex flex-row gap-10 px-4 w-max">
-              <div *ngFor="let m of team" 
-                   class="w-[320px] md:w-[350px] text-center p-10 border border-white/20 bg-white/60 backdrop-blur-md rounded-[2.5rem] transition-all duration-500 hover:border-[#b38e2d] hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(179,142,45,0.18)] shrink-0 group">
-                
-                <div class="w-24 h-24 mx-auto mb-8 flex items-center justify-center border-2 border-[#b38e2d] rounded-full bg-cream transition-all duration-500 group-hover:scale-110 group-hover:bg-white shadow-sm">
-                  <span class="font-serif text-3xl font-bold text-[#b38e2d]">{{m.initials}}</span>
+              <div *ngFor="let m of team"
+                   class="w-[220px] md:w-[240px] text-center p-5 border border-white/20 bg-white/60 backdrop-blur-md rounded-[2rem] transition-all duration-500 hover:border-[#b38e2d] hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(179,142,45,0.18)] shrink-0 group">
+
+                <div class="w-14 h-14 mx-auto mb-5 flex items-center justify-center border-2 border-[#b38e2d] rounded-full bg-cream transition-all duration-500 group-hover:scale-110 group-hover:bg-white shadow-sm">
+                  <span class="font-serif text-lg font-bold text-[#b38e2d]">{{m.initials}}</span>
                 </div>
 
-                <h3 class="text-xl font-serif font-bold text-forest mb-2 transition-colors group-hover:text-[#b38e2d]">{{m.name}}</h3>
-                <div class="text-[0.7rem] text-[#b38e2d] uppercase font-bold tracking-[0.2em] mb-6">{{m.role}}</div>
-                <p class="text-[0.95rem] text-gray-500 leading-relaxed px-2">{{m.expertise}}</p>
+                <h3 class="text-base font-serif font-bold text-forest mb-1 transition-colors group-hover:text-[#b38e2d]">{{m.name}}</h3>
+                <div class="text-[0.65rem] text-[#b38e2d] uppercase font-bold tracking-[0.2em] mb-4">{{m.role}}</div>
+                <p class="text-xs text-gray-500 leading-relaxed px-1 text-justify">{{m.expertise}}</p>
               </div>
             </div>
           </div>

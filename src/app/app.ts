@@ -41,23 +41,17 @@ import { TeamComponent } from './components/team';
             <app-services />
             <app-team />
             <app-locations />
-            <app-newsletter />
             <app-contact />
           </ng-container>
 
           <ng-container *ngSwitchCase="'qui-sommes-nous'">
             <div class="pt-20"><app-about /></div>
             <app-experience (navigate)="onNavigate($event)" />
-            <app-services />
             <app-locations />
           </ng-container>
 
-          <ng-container *ngSwitchCase="'expertises'">
-            <div class="pt-20"><app-services /></div>
-          </ng-container>
-
           <ng-container *ngSwitchCase="'partenaires'">
-            <div class="pt-20"><app-newsletter /></div>
+            <div class="pt-20"><div class="text-center py-20 text-forest font-serif text-3xl">Nos Partenaires</div></div>
           </ng-container>
 
           <ng-container *ngSwitchCase="'contact'">

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,58 +10,81 @@ gsap.registerPlugin(ScrollTrigger);
   standalone: true,
   imports: [CommonModule],
   template: `
-    <!-- Nos axes d'intervention -->
+    <!-- Nos axes d'intervention (Droit d'affaire) -->
     <section id="expertises" class="bg-cream py-20 lg:py-28 overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-16 text-center reveal-up">
-          <p class="section-label mb-3">Expertises</p>
-          <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl">Des solutions juridiques adaptées</h2>
+          <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl uppercase tracking-tight">Droit d'affaire</h2>
           <div class="mx-auto mt-4 h-1 w-20 bg-accent"></div>
+          <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Des solutions juridiques adaptées à vos besoins stratégiques et opérationnels.</p>
         </div>
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div *ngFor="let s of services; let i = index"
-               class="relative rounded-2xl bg-white p-10 shadow-md border-2 border-forest/10">
-            <div class="mb-6 h-12 w-12 bg-accent/10 flex items-center justify-center rounded-lg">
-              <span class="text-forest font-bold">{{i+1}}</span>
+               class="relative rounded-xl bg-white p-4 shadow-sm border border-forest/5 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+            <div class="mb-3 h-7 w-7 bg-accent/10 flex items-center justify-center rounded-lg">
+              <span class="text-forest font-bold text-xs">{{i+1}}</span>
             </div>
-            <h3 class="mb-4 font-serif text-xl font-bold text-forest">{{ s.title }}</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">{{ s.desc }}</p>
+            <h3 class="mb-2 font-serif text-sm font-bold text-forest">{{ s.title }}</h3>
+            <p class="text-xs text-gray-500 leading-relaxed text-justify">{{ s.desc }}</p>
           </div>
+        </div>
+
+        <div class="mt-16 text-center">
+          <button (click)="showCommercial.set(true)"
+                  class="inline-flex items-center gap-3 rounded-full bg-forest px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-forest-dark hover:shadow-lg">
+            Découvrir notre section commerciale
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Section Commerciale -->
-    <section class="bg-cream py-20 overflow-hidden">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal-comm-header">
-          <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl">Notre Section<br>Commerciale</h2>
-          <div class="red-underline"></div>
-          <p class="mb-14 max-w-lg text-gray-600 leading-relaxed">
+    <!-- Popup Section Commerciale -->
+    <div *ngIf="showCommercial()" 
+         class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-forest-dark/80 backdrop-blur-sm"
+         (click)="showCommercial.set(false)">
+      <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-cream rounded-2xl shadow-2xl p-8 md:p-12"
+           (click)="$event.stopPropagation()">
+        <button (click)="showCommercial.set(false)" 
+                class="absolute top-6 right-6 text-forest hover:text-accent transition-colors">
+          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <div class="mb-12">
+          <h2 class="font-serif text-3xl font-bold text-forest lg:text-4xl">Notre Section Commerciale</h2>
+          <div class="mt-4 h-1 w-16 bg-accent"></div>
+          <p class="mt-6 text-gray-600 leading-relaxed text-justify">
             Nous transformons vos projets en réussite. Un accompagnement sur mesure pour chaque secteur d'activité, de l'idée à la concrétisation.
           </p>
         </div>
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 reveal-comm-grid">
-          <div *ngFor="let c of commercial" class="border-t-2 border-gray-200 pt-6 group hover:border-accent transition-colors duration-500">
-            <p class="num mb-3 font-serif text-3xl font-bold text-gray-100 group-hover:text-accent/20 transition-colors">{{ c.num }}</p>
-            <h3 class="mb-3 font-serif text-lg font-bold text-forest group-hover:text-accent transition-colors">{{ c.title }}</h3>
-            <div class="mb-4 h-0.5 w-8 bg-accent transition-all duration-500 group-hover:w-full"></div>
-            <p class="text-sm text-gray-500 leading-relaxed">{{ c.desc }}</p>
+
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div *ngFor="let c of commercial" class="border-l-2 border-accent/30 pl-6 py-2 group">
+            <p class="text-accent font-bold text-xs mb-1">{{ c.num }}</p>
+            <h3 class="mb-2 font-serif text-lg font-bold text-forest group-hover:text-accent transition-colors">{{ c.title }}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed text-justify">{{ c.desc }}</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   `,
-  styles: []
+  styles: [`
+    :host { display: block; }
+  `]
 })
 export class ServicesComponent implements AfterViewInit {
+  showCommercial = signal(false);
+
   services = [
-    { title: 'Protéger son activité',          desc: 'Protection juridique complète de votre entreprise et de vos actifs.',                                    iconImg: '/assets/icons/service-1.png' },
-    { title: 'Contrats',                       desc: 'Rédaction, négociation et gestion de tous types de contrats commerciaux.',                               iconImg: '/assets/icons/service-2.png' },
-    { title: 'Informations commerciales',      desc: 'Analyse et veille juridique pour vos décisions commerciales.',                                           iconImg: '/assets/icons/service-3.png' },
-    { title: 'Banque et Finance',              desc: 'Conseil en droit bancaire et réglementation financière internationale.',                                  iconImg: '/assets/icons/service-4.png' },
-    { title: 'Risques',                        desc: 'Identification et gestion des risques juridiques et réglementaires.',                                    iconPath: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' },
-    { title: 'Autres Secteurs De Compétences', desc: 'Expertise dans divers domaines du droit pour répondre à tous vos besoins spécifiques.',                  iconPath: 'M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z' },
+    { title: 'Solutions Judiciaires',          desc: 'Protection juridique complète de votre entreprise et de vos actifs, rédaction, négociation et gestion de tous types de contrats commerciaux. Analyse et veille juridique pour vos décisions commerciales et stratégiques.' },
+    { title: 'Banque et Finance',              desc: 'Conseil en droit bancaire et réglementation financière internationale.' },
+    { title: 'Risques',                        desc: 'Identification et gestion des risques juridiques et réglementaires pour sécuriser votre activité.' },
+    { title: 'Autres Secteurs De Compétences', desc: 'Expertise dans divers domaines du droit pour répondre à tous vos besoins spécifiques.' },
   ];
 
   commercial = [
@@ -79,28 +102,16 @@ export class ServicesComponent implements AfterViewInit {
     setTimeout(() => {
       ScrollTrigger.refresh();
       
-      // Animation simple pour le titre uniquement
       const header = root.querySelector('.reveal-up');
       if (header) {
         gsap.from(header, {
           y: 20,
           opacity: 0,
           duration: 0.6,
-          ease: 'power2.out'
-        });
-      }
-
-      // On ne touche pas à la grille avec GSAP pour l'instant pour être sûr qu'elle s'affiche
-      
-      const commHeader = root.querySelector('.reveal-comm-header');
-      if (commHeader) {
-        gsap.from(commHeader, {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
+          ease: 'power2.out',
           scrollTrigger: {
-            trigger: commHeader,
-            start: 'top 95%'
+            trigger: header,
+            start: 'top 90%'
           }
         });
       }
