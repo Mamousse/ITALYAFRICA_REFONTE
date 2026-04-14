@@ -28,20 +28,21 @@ gsap.registerPlugin(ScrollTrigger);
         </div>
 
         <!-- Grille logos -->
-        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-y-16 gap-x-12 items-center justify-items-center">
           <div *ngFor="let p of partners"
-               class="reveal-card group flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b38e2d]/40 hover:shadow-lg">
+               class="reveal-card group flex flex-col items-center justify-center transition-all duration-300">
 
-            <!-- Logo wrapper -->
-            <div class="flex h-14 w-full items-center justify-center overflow-hidden rounded-lg p-1"
-                 [style.backgroundColor]="p.bgColor || '#f9f9f9'">
+            <!-- Logo Standardisé (Couleurs d'origine) -->
+            <div class="flex h-16 w-full items-center justify-center">
               <img [src]="'/assets/partners/' + p.logo"
                    [alt]="p.name"
-                   class="max-h-12 max-w-full w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                   class="h-12 w-auto max-w-full object-contain transition-all duration-500 hover:scale-110">
             </div>
 
-            <!-- Nom -->
-            <p class="text-xs font-bold text-center text-forest group-hover:text-[#b38e2d] transition-colors">{{ p.name }}</p>
+            <!-- Nom (très discret pour l'équilibre) -->
+            <p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-forest/20 group-hover:text-[#b38e2d]/60 transition-colors text-center">
+              {{ p.name }}
+            </p>
           </div>
         </div>
 
@@ -56,10 +57,15 @@ gsap.registerPlugin(ScrollTrigger);
 export class PartnersComponent implements AfterViewInit {
 
   partners = [
-    { name: 'ICC Maroc',       logo: 'cci-maroc.png',       country: 'Maroc',   bgColor: '' },
-    { name: 'Coin Chic',       logo: 'coin-chic-icon.png',  country: 'Italie',  bgColor: '#f5c518' },
-    { name: 'Avila Mining',    logo: 'avila-mining.png',    country: 'Afrique', bgColor: '' },
-    { name: 'La Vita è Bella', logo: 'la-vita-e-bella.png', country: 'Italie',  bgColor: '' },
+    { name: 'Camera di Commercio Italiana in Marocco', logo: 'icc-maroc-new.png',      country: 'Maroc',   bgColor: '#fff' },
+    { name: 'Coin Chic',                               logo: 'coin-chic-new.png',       country: 'Italie',  bgColor: '#fff' },
+    { name: 'Avila Mining',                            logo: 'avila-mining-new.png',    country: 'Afrique', bgColor: '#fff' },
+    { name: 'La Vita è Bella',                         logo: 'la-vita-e-bella-new.png', country: 'Italie',  bgColor: '#fff' },
+    { name: 'Akrom',                                   logo: 'akrom-new.png',           country: 'Afrique', bgColor: '#000' },
+    { name: 'La Domus di Venere',                      logo: 'domus-venere.png',        country: 'Italie',  bgColor: '#1a2a3a' },
+    { name: 'Coffee Living Campetelli',                logo: 'campetelli.png',          country: 'Italie',  bgColor: '#fff' },
+    { name: 'Novael Audit & Conseil',                  logo: 'novael.png',              country: 'Afrique', bgColor: '#fff' },
+    { name: 'I Feel Gold',                             logo: 'i-feel-gold-v2.png',      country: 'International', bgColor: '#000' },
   ];
 
   constructor(private el: ElementRef) {}

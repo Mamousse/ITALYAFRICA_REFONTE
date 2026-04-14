@@ -51,7 +51,7 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class LocationsComponent implements AfterViewInit {
   locations = [
-    { country: 'Maroc',         city: 'Casablanca',   flagCode: 'ma', address: '228 BD Mohamed V, ETG 9' },
+    { country: 'Maroc',         city: 'Casablanca',   flagCode: 'ma', address: '228 Boulevard Mohamed V, ETG 9' },
     { country: 'Sénégal',       city: 'Dakar',         flagCode: 'sn', address: 'Avenue Cheikh Anta Diop' },  
     { country: 'Italie',        city: 'Rome',          flagCode: 'it', address: 'Via di Ripetta, 00186' },      
     { country: 'Mali',          city: 'Bamako',        flagCode: 'ml', address: 'Bureau de liaison' },

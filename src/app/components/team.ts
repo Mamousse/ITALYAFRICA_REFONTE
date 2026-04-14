@@ -68,12 +68,13 @@ export class TeamComponent implements AfterViewInit {
   private el = inject(ElementRef);
 
   team = [
-    { initials: 'MK', name: 'Moussa Kanté',              role: 'Associé Fondateur',    expertise: 'Expertise Internationale & Stratégie Bilatérale' },
-    { initials: 'SE', name: 'Sofia Esposito',            role: 'Associée',             expertise: 'Droit des Affaires Italien & Européen' },
-    { initials: 'AD', name: 'Amadou Diallo',             role: 'Associé',              expertise: 'Investissements & Fiscalité Africaine' },
-    { initials: 'CR', name: 'Chiara Romano',             role: 'Associée',             expertise: 'Règlement des Litiges & Négociation' },
-    { initials: 'SL', name: 'S. Laurent',                role: 'Consultante Business', expertise: 'Due Diligence & Implantation Marché' },
-    { initials: 'AK', name: 'A. Koné',                   role: 'Expert Compliance',    expertise: 'Gestion des Risques & Audit Réglementaire' }
+    { initials: 'AV', name: 'Avocat Valerio',            role: 'Gérant',                        expertise: 'Stratégie Juridique & Direction de Cabinet' },
+    { initials: 'LC', name: 'Lamine Condé',              role: 'Juriste Senior',                expertise: 'Droit des Affaires & Contentieux International' },
+    { initials: 'MK', name: 'Mariam Kanté',              role: 'Manager Assistante',            expertise: 'Gestion Opérationnelle & Coordination' },
+    { initials: 'DS', name: 'Diedhou Sylvie',            role: 'Juriste',                       expertise: 'Conseil Juridique & Rédaction d\'Actes' },
+    { initials: 'HT', name: 'Hawa Traoré',               role: 'Assistante Comptable',          expertise: 'Gestion Financière & Suivi Comptable' },
+    { initials: 'BB', name: 'Basse Benedicta',           role: 'Resp. Admin. et Comptable',     expertise: 'Administration Générale & Fiscalité' },
+    { initials: 'LA', name: 'Lopy Alexandre',            role: 'Assistant Juriste',             expertise: 'Support Juridique & Recherche Documentaire' }
   ];
 
   ngAfterViewInit() {

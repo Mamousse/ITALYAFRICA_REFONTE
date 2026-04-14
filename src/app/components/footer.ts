@@ -20,10 +20,10 @@ import { CommonModule } from '@angular/common';
               </li>
             </ul>
             <div class="space-y-1 text-sm">
+              <p class="mb-2 text-white/80 italic font-light">228 Boulevard Mohamed V, ETG 9, Casablanca</p>
               <a href="mailto:info@italyafricavrl.com" class="block hover:text-white transition-colors">info&#64;italyafricavrl.com</a>
-              <a href="mailto:mkante@italyafricavrl.com" class="block hover:text-white transition-colors">mkante&#64;italyafricavrl.com</a>
               <p class="mt-2 text-justify">Numéro Fixe&nbsp;: <a href="tel:0522928215" class="text-white hover:text-accent">05 22 92 82 15</a></p>
-              <p class="text-justify">Numéro Portable&nbsp;: <a href="tel:+212631661370" class="text-white hover:text-accent">+212 (6) 31 66 13 70</a></p>
+              <p class="text-justify">Numéro Portable&nbsp;: <a href="tel:+212700034243" class="text-white hover:text-accent">+212 700-034243</a></p>
             </div>
           </div>
 

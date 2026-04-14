@@ -54,7 +54,7 @@ import { StarsBackgroundComponent } from './stars-background';
       <!-- Info bar -->
       <div class="relative z-10 bg-forest-dark/90 py-3 mt-auto">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-white/60">
-          <span><span class="font-bold uppercase tracking-wider text-white/80">Notre Siège&nbsp;:</span> Casablanca, Maroc</span>
+          <span><span class="font-bold uppercase tracking-wider text-white/80">Notre Siège&nbsp;:</span> 228 Boulevard Mohamed V, ETG 9, Casablanca</span>
           <span><span class="font-bold uppercase tracking-wider text-white/80">Consultation Gratuite&nbsp;:</span> +212 (0) 22 92 82 15</span>
         </div>
       </div>

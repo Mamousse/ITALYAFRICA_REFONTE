@@ -73,6 +73,13 @@ export class App {
   currentPage = signal('home');
 
   onNavigate(page: string) {
+    if (page === 'contact' || page === 'nos-axes' || page === 'partenaires' || page === 'qui-sommes-nous') {
+      const element = document.getElementById(page === 'qui-sommes-nous' ? 'about' : page);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
     this.currentPage.set(page);
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }
