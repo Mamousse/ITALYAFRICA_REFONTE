@@ -1,42 +1,6 @@
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('/assets/fonts/inter/inter-variable.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/assets/fonts/playfair-display/playfair-display-variable.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: italic;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url('/assets/fonts/playfair-display/playfair-display-italic-variable.woff2') format('woff2');
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f0ede6;
-    color: #1a3a2e;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    color: #1a3a2e;
-  }
-}
 
 @layer components {
   .btn-primary {

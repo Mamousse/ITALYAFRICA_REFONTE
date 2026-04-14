@@ -6,6 +6,42 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="preload" href="/assets/fonts/inter/inter-variable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/assets/fonts/playfair-display/playfair-display-variable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/assets/fonts/playfair-display/playfair-display-italic-variable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/justice-law.jpg" as="image">
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('/assets/fonts/inter/inter-variable.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('/assets/fonts/playfair-display/playfair-display-variable.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Playfair Display';
+      font-style: italic;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('/assets/fonts/playfair-display/playfair-display-italic-variable.woff2') format('woff2');
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0ede6;
+      color: #1a3a2e;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      color: #1a3a2e;
+    }
+  </style>
 </head>
 <body>
   <app-root></app-root>
