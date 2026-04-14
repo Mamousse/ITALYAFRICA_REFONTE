@@ -49,14 +49,35 @@
       font-display: swap;
       src: url('/assets/fonts/playfair-display/playfair-display-italic-variable.woff2') format('woff2');
     }
+    /* Critical CSS — prevents FOUC before Tailwind loads */
+    *, *::before, *::after { box-sizing: border-box; }
     body {
-      font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
       background-color: #f0ede6;
       color: #1a3a2e;
+      overflow-x: hidden;
     }
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', Georgia, serif;
       color: #1a3a2e;
+    }
+    app-root {
+      display: block;
+      min-height: 100vh;
+      background-color: #f0ede6;
+    }
+    /* Navbar toujours fixée et visible correctement dès le premier rendu */
+    app-navbar nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 50;
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
   </style>
 </head>
