@@ -82,6 +82,91 @@
   </style>
 </head>
 <body>
+  <div id="global-loader">
+    <div class="initial-loader">
+      <div class="loader-content">
+        <div class="logo-placeholder">
+          <div class="spinner"></div>
+        </div>
+        <p class="loader-text">ITALYAFRICA</p>
+        <div class="loader-bar">
+          <div class="loader-progress"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    #global-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: #f0ede6;
+      transition: opacity 0.8s ease-out, visibility 0.8s;
+    }
+    #global-loader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .initial-loader {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .loader-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: #1a3a2e;
+      margin: 0;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(26, 58, 46, 0.1);
+      border-top: 3px solid #b38e2d;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .loader-bar {
+      width: 120px;
+      height: 2px;
+      background: rgba(26, 58, 46, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .loader-progress {
+      width: 100%;
+      height: 100%;
+      background: #b38e2d;
+      animation: progress 2s infinite ease-in-out;
+      transform-origin: left;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    @keyframes progress {
+      0% { transform: scaleX(0); }
+      50% { transform: scaleX(1); }
+      100% { transform: scaleX(0); transform-origin: right; }
+    }
+  </style>
+
   <app-root></app-root>
 </body>
 </html>

@@ -70,7 +70,6 @@ export class TeamComponent implements AfterViewInit {
   team = [
     { initials: 'AV', name: 'Avocat Valerio',            role: 'Gérant',                        expertise: 'Stratégie Juridique & Direction de Cabinet' },
     { initials: 'LC', name: 'Lamine Condé',              role: 'Juriste Senior',                expertise: 'Droit des Affaires & Contentieux International' },
-    { initials: 'MK', name: 'Mariam Kanté',              role: 'Manager Assistante',            expertise: 'Gestion Opérationnelle & Coordination' },
     { initials: 'DS', name: 'Diedhou Sylvie',            role: 'Juriste',                       expertise: 'Conseil Juridique & Rédaction d\'Actes' },
     { initials: 'HT', name: 'Hawa Traoré',               role: 'Assistante Comptable',          expertise: 'Gestion Financière & Suivi Comptable' },
     { initials: 'BB', name: 'Basse Benedicta',           role: 'Resp. Admin. et Comptable',     expertise: 'Administration Générale & Fiscalité' },

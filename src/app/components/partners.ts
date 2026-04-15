@@ -33,10 +33,10 @@ gsap.registerPlugin(ScrollTrigger);
                class="reveal-card group flex flex-col items-center justify-center transition-all duration-300">
 
             <!-- Logo Standardisé (Couleurs d'origine) -->
-            <div class="flex h-16 w-full items-center justify-center">
+            <div class="flex h-32 w-full items-center justify-center">
               <img [src]="'/assets/partners/' + p.logo"
                    [alt]="p.name"
-                   class="h-12 w-auto max-w-full object-contain transition-all duration-500 hover:scale-110">
+                   [class]="'w-auto max-w-full object-contain transition-all duration-500 hover:scale-110 ' + (p.name === 'Akrom' ? 'h-28 scale-110' : 'h-16')">
             </div>
 
             <!-- Nom (très discret pour l'équilibre) -->

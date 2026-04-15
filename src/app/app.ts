@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './components/navbar';
 import { FooterComponent } from './components/footer';
@@ -27,18 +27,41 @@ import { filter } from 'rxjs/operators';
   `,
   styles: [],
 })
-export class App {
-  constructor(private router: Router) {
+export class App implements AfterViewInit {
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
+  }
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Attendre que l'application soit stable avant de masquer le loader
+      setTimeout(() => {
+        const loader = document.getElementById('global-loader');
+        if (loader) {
+          loader.classList.add('fade-out');
+          // Optionnel: supprimer l'élément du DOM après l'animation (800ms)
+          setTimeout(() => {
+            loader.remove();
+          }, 800);
+        }
+      }, 500); 
+    }
   }
 
   onNavigate(page: string) {
     if (page === 'home') {
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
       return;
     }
 

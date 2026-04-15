@@ -27,9 +27,14 @@ export class StarsBackgroundComponent implements OnInit, OnDestroy {
   constructor(private ngZone: NgZone) {}
 
   ngOnInit() {
-    this.initThree();
-    this.animate();
-    window.addEventListener('resize', this.onResize.bind(this));
+    // On n'initialise que si on est dans un navigateur et après le rendu initial
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        this.initThree();
+        this.animate();
+        window.addEventListener('resize', this.onResize.bind(this));
+      }, 500); // Délai de 500ms pour laisser le reste s'afficher d'abord
+    }
   }
 
   ngOnDestroy() {

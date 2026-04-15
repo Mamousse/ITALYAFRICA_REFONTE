@@ -10,7 +10,10 @@ import { StarsBackgroundComponent } from './stars-background';
     <section id="home" class="relative min-h-screen flex flex-col">
       <!-- Background -->
       <div class="absolute inset-0 z-0">
-        <img src="/justice-law.jpg" alt="Cabinet Juridique" class="h-full w-full object-cover">
+        <img src="/justice-law.jpg" alt="Cabinet Juridique" 
+             class="h-full w-full object-cover"
+             fetchpriority="high"
+             loading="eager">
         <app-stars-background></app-stars-background>
         <div class="absolute inset-0 bg-forest-dark/60"></div>
       </div>
@@ -55,7 +58,7 @@ import { StarsBackgroundComponent } from './stars-background';
       <div class="relative z-10 bg-forest-dark/90 py-3 mt-auto">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-white/60">
           <span><span class="font-bold uppercase tracking-wider text-white/80">Notre Siège&nbsp;:</span> 228 Boulevard Mohamed V, ETG 9, Casablanca</span>
-          <span><span class="font-bold uppercase tracking-wider text-white/80">Consultation Gratuite&nbsp;:</span> +212 (0) 22 92 82 15</span>
+          <span><span class="font-bold uppercase tracking-wider text-white/80">Consultation Gratuite&nbsp;:</span> +212 700-034243</span>
         </div>
       </div>
     </section>

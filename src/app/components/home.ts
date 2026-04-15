@@ -26,13 +26,23 @@ import { SeoService } from '../services/seo.service';
   ],
   template: `
     <app-hero (navigate)="onNavigate($event)" />
-    <app-about id="about" />
-    <app-experience (navigate)="onNavigate($event)" />
-    <app-services id="nos-axes" />
-    <app-team />
-    <app-locations />
-    <app-partners id="partenaires" />
-    <app-contact id="contact" />
+    
+    @defer (on viewport; prefetch on idle) {
+      <app-about id="about" />
+      <app-experience (navigate)="onNavigate($event)" />
+      <app-services id="nos-axes" />
+    } @placeholder {
+      <div class="h-96 bg-cream/50 animate-pulse"></div>
+    }
+
+    @defer (on viewport; prefetch on idle) {
+      <app-team />
+      <app-locations />
+      <app-partners id="partenaires" />
+      <app-contact id="contact" />
+    } @placeholder {
+      <div class="h-96 bg-cream/50 animate-pulse"></div>
+    }
   `,
 })
 export class HomeComponent implements OnInit {
