@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="locations" class="py-24 bg-white relative overflow-hidden">
+    <section id="locations" class="py-12 bg-white relative overflow-hidden">
       <!-- Orbs décoratifs -->
-      <div class="absolute -left-32 top-10 w-[500px] h-[500px] bg-[#b38e2d]/5 rounded-full blur-[80px] pointer-events-none"></div>
-      <div class="absolute -right-20 bottom-15 w-[350px] h-[350px] bg-[#b38e2d]/5 rounded-full blur-[80px] pointer-events-none"></div>
+      <div class="absolute -left-32 top-10 w-[300px] h-[300px] bg-[#b38e2d]/5 rounded-full blur-[80px] pointer-events-none"></div>
+      <div class="absolute -right-20 bottom-15 w-[250px] h-[250px] bg-[#b38e2d]/5 rounded-full blur-[80px] pointer-events-none"></div>
 
       <div class="px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 reveal-up">
-          <span class="block text-xs font-bold uppercase tracking-[0.45em] text-[#b38e2d] mb-4">
+        <div class="text-center mb-8 reveal-up">
+          <span class="block text-[0.6rem] font-bold uppercase tracking-[0.4em] text-[#b38e2d] mb-3">
             Réseau Mondial
           </span>
-          <h2 class="text-4xl md:text-5xl font-serif font-bold text-forest mb-6">
+          <h2 class="text-2xl md:text-3xl font-serif font-bold text-forest mb-4">
             Notre Présence <span class="text-[#b38e2d]">Internationale</span>
           </h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#b38e2d] to-transparent mx-auto"></div>
+          <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#b38e2d] to-transparent mx-auto"></div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mt-12">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8 mt-8">
           <div *ngFor="let l of locations" class="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-2 reveal-flag">
-            <div class="w-[140px] h-[140px] mx-auto mb-6 border-2 border-gray-100 rounded-full p-3 transition-all duration-500 group-hover:border-[#b38e2d] group-hover:scale-105 group-hover:shadow-[0_10px_30px_rgba(179,142,45,0.2)] bg-white">
-              <div class="rounded-full overflow-hidden w-full h-full border border-gray-50">
+            <div class="w-[60px] h-[60px] mx-auto mb-3 border-2 border-[#b38e2d]/10 rounded-full p-1 transition-all duration-500 group-hover:border-[#b38e2d] group-hover:scale-105 group-hover:shadow-[0_10px_30px_rgba(179,142,45,0.2)] bg-white">
+              <div class="rounded-full overflow-hidden w-full h-full border border-[#b38e2d]/5">
                 <img [src]="'/assets/flags/' + l.flagCode + '.png'"
                      [alt]="l.country"
                      class="w-full h-full object-cover"

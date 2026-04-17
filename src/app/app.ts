@@ -1,9 +1,9 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, ApplicationRef } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './components/navbar';
 import { FooterComponent } from './components/footer';
-import { filter } from 'rxjs/operators';
+import { filter, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +30,7 @@ import { filter } from 'rxjs/operators';
 export class App implements AfterViewInit {
   constructor(
     private router: Router,
+    private appRef: ApplicationRef,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.router.events.pipe(
@@ -43,17 +44,22 @@ export class App implements AfterViewInit {
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      // Attendre que l'application soit stable avant de masquer le loader
-      setTimeout(() => {
-        const loader = document.getElementById('global-loader');
-        if (loader) {
-          loader.classList.add('fade-out');
-          // Optionnel: supprimer l'élément du DOM après l'animation (800ms)
-          setTimeout(() => {
-            loader.remove();
-          }, 800);
-        }
-      }, 500); 
+      // Attendre que l'application soit stable (toutes les requêtes et zones terminées)
+      this.appRef.isStable.pipe(
+        filter(stable => stable),
+        first()
+      ).subscribe(() => {
+        // Petit délai supplémentaire pour laisser le rendu visuel se stabiliser
+        setTimeout(() => {
+          const loader = document.getElementById('global-loader');
+          if (loader) {
+            loader.classList.add('fade-out');
+            setTimeout(() => {
+              loader.remove();
+            }, 400);
+          }
+        }, 200);
+      });
     }
   }
 

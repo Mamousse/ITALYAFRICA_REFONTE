@@ -18,20 +18,19 @@ gsap.registerPlugin(ScrollTrigger);
 
           <!-- Image -->
           <div class="relative overflow-hidden rounded-2xl shadow-xl reveal-left">
-            <img src="/bureau.jpg" alt="Cabinet ItalyAfrica" class="w-full h-[480px] object-cover transition-transform duration-700 hover:scale-110">
+            <img src="/bureau.jpg" alt="Cabinet ITALYAFRICA - Expertise Juridique Internationale à Casablanca" class="w-full h-[480px] object-cover transition-transform duration-700 hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/30 to-transparent"></div>
           </div>
 
           <!-- Content -->
           <div>
-            <p class="section-label mb-2 reveal-label">Qui sommes nous</p>
-            <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl reveal-title">À propos de nous</h2>
+            <h2 class="font-serif text-4xl font-bold text-forest lg:text-5xl reveal-title">Cabinet Juridique <span class="text-[#b38e2d]">Italie-Afrique</span></h2>
             <div class="red-underline reveal-underline"></div>
 
             <p class="mb-3 text-xs font-bold uppercase tracking-widest text-forest/50 reveal-subtitle">
-              Cabinet Juridique Professionnel &amp; Expérimenté
+              Professionnalisme &amp; Expérience Internationale
             </p>
-            <h3 class="mb-6 font-serif text-2xl font-bold text-forest reveal-subtitle">Vous êtes au bon endroit</h3>
+            <h3 class="mb-6 font-serif text-2xl font-bold text-forest reveal-subtitle">Expertise et Accompagnement de Projets</h3>
 
             <div class="space-y-4 text-gray-600 leading-relaxed text-justify">
               <p class="reveal-para">
@@ -202,10 +201,6 @@ export class AboutComponent implements AfterViewInit {
     gsap.from(root.querySelector('.reveal-left'), {
       scrollTrigger: { trigger: root.querySelector('.reveal-left'), start: 'top 80%', once: true },
       x: -100, opacity: 0, duration: 1.2, ease: 'power3.out'
-    });
-    gsap.from(root.querySelector('.reveal-label'), {
-      scrollTrigger: { trigger: root.querySelector('.reveal-label'), start: 'top 85%', once: true },
-      x: 40, opacity: 0, duration: 0.7, ease: 'power2.out'
     });
     gsap.from(root.querySelector('.reveal-title'), {
       scrollTrigger: { trigger: root.querySelector('.reveal-title'), start: 'top 85%', once: true },

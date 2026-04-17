@@ -27,13 +27,14 @@ export class StarsBackgroundComponent implements OnInit, OnDestroy {
   constructor(private ngZone: NgZone) {}
 
   ngOnInit() {
-    // On n'initialise que si on est dans un navigateur et après le rendu initial
     if (typeof window !== 'undefined') {
-      setTimeout(() => {
-        this.initThree();
-        this.animate();
-        window.addEventListener('resize', this.onResize.bind(this));
-      }, 500); // Délai de 500ms pour laisser le reste s'afficher d'abord
+      this.ngZone.runOutsideAngular(() => {
+        setTimeout(() => {
+          this.initThree();
+          this.animate();
+          window.addEventListener('resize', this.onResize.bind(this));
+        }, 200);
+      });
     }
   }
 
@@ -61,14 +62,15 @@ export class StarsBackgroundComponent implements OnInit, OnDestroy {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvasRef.nativeElement,
       alpha: true,
-      antialias: true
+      antialias: false,
+      powerPreference: 'low-power',
     });
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Create Stars
     this.starGeometry = new THREE.BufferGeometry();
-    const starCount = 8000;
+    const starCount = 3500;
     const positions = new Float32Array(starCount * 3);
     const velocities = new Float32Array(starCount);
 

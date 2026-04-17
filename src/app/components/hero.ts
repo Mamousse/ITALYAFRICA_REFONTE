@@ -25,8 +25,8 @@ import { StarsBackgroundComponent } from './stars-background';
             — ENGAGÉS À ACCOMPAGNER LA RÉUSSITE DE NOS CLIENTS
           </p>
           <h1 class="mx-auto max-w-4xl font-serif text-4xl font-bold leading-tight text-white md:text-5xl lg:text-7xl">
-            Votre sécurité<br>
-            <span class="italic">juridique d'abord.</span>
+            Votre Cabinet<br>
+            <span class="italic">Juridique International.</span>
           </h1>
           
           <div class="mt-10 flex justify-center">
